@@ -14,6 +14,16 @@ class BackgroundTimer {
     this.uniqueId = 0;
     this.callbacks = {};
 
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
+    this.runBackgroundTimer = this.runBackgroundTimer.bind(this);
+    this.backgroundClockMethod = this.backgroundClockMethod.bind(this);
+    this.stopBackgroundTimer = this.stopBackgroundTimer.bind(this);
+    this.setTimeout = this.setTimeout.bind(this);
+    this.clearTimeout = this.clearTimeout.bind(this);
+    this.setInterval = this.setInterval.bind(this);
+    this.clearInterval = this.clearInterval.bind(this);
+
     Emitter.addListener('backgroundTimer.timeout', (id) => {
       if (this.callbacks[id]) {
         const callbackById = this.callbacks[id];
